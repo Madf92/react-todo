@@ -7,14 +7,14 @@ import { TodoItem } from './components/TodoItem/TodoItem';
 import { CreateTodoButton } from './components/CreateTodoItem/CreateTodoItem';
 
 import { defaultTodos } from './assets/defaultTodos';
+import './App.css';
 
 function App() {
   return (
     <>
       <TodoCounter
-        ClassName="Tittle"
-        total={1}
         completed={0}
+        total={1}
       />
       <TodoSearch />
 
@@ -28,7 +28,7 @@ function App() {
         ))}
       </TodoList>
 
-      <CreateTodoButton />
+      <CreateTodoButton/>
     </>
   );
 }

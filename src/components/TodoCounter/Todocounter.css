@@ -1,7 +1,11 @@
-.tittle{
-    text-align: center;
+.tittle {
     font-size: 24px;
-    font-weight: 700;
-    color: #97ca3f;
-    margin-bottom: 16px;
-}
+    text-align: center;
+    margin: 0;
+    padding: 48px;
+    font-weight: normal;
+  }
+  
+  .tittle span {
+    font-weight: bold;
+  }

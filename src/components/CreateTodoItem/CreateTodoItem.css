@@ -1,0 +1,40 @@
+.button-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+  }
+
+.create-button{
+    background-color: rgb(137, 53, 255);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 50px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    font-weight: bold;
+    color: #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 64px;
+
+    transform: rotate(0);
+    transition: .1s ease;
+}
+
+.shadow {
+    box-shadow: 5px 5px 25px rgba(73, 0, 102, 0.5);
+    border: none;
+    border-radius: 50px;
+    height: 64px;
+    width: 64px;
+  }
+
+.create-button:hover{
+    transform: rotate(135deg);
+    transition: .1s ease;
+}
+
