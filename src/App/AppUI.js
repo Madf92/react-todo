@@ -5,42 +5,53 @@ import { TodoSearch } from '../components/TodoSearch/TodoSearch';
 import { TodoList } from '../components/TodoList/TodoList';
 import { TodoItem } from '../components/TodoItem/TodoItem';
 import { CreateTodoButton } from '../components/CreateTodoButton/CreateTodoButton';
+import { TodoLoading } from '../components/TodoLoading/TodoLoading';
+import { TodoEmpty } from '../components/TodoEmpty/TodoEmpty';
+import { TodoError } from '../components/TodoError/TodoError';
+import { Modal } from '../components/Modal/Modal';
 
-function AppUI ({
-    totalTodos,
-    completedTodos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    onMarkEvent,
-    onDeleteEvent
-}){
+import { TodoContext } from '../TodoContext/TodoContext';
+
+function AppUI (){
+    const {
+        loading,
+        error,
+        searchedTodos,
+        onMarkEvent,
+        onDeleteEvent,
+        searchValue,
+        openModal,
+        setOpenModal,
+     } = React.useContext(TodoContext);
+
     return (
         <>
-            <TodoCounter
-            completed={completedTodos}
-            total={totalTodos}
-            />
-            <TodoSearch
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            />
+            <TodoCounter/>
+            <TodoSearch/>
+
             <TodoList>
-            {
-                searchedTodos.length === 0 ? <p>Ups! There's Not TODOs!</p>
-                :
-                searchedTodos.map(todo => (
-                <TodoItem 
-                    key={todo.id}
-                    text={todo.title}
-                    completed={todo.completed}
-                    onMark={() => onMarkEvent(todo.id)}
-                    onDelete={() => onDeleteEvent(todo.id)}
-                />
+                {loading && <TodoLoading/>}
+                {error && <TodoError />}
+                {(!loading && !searchedTodos.length) && <TodoEmpty searchValue={searchValue}/>}
+                {searchedTodos.map(todo => (
+                    <TodoItem 
+                        key={todo.id}
+                        text={todo.title}
+                        completed={todo.completed}
+                        onMark={() => onMarkEvent(todo.id)}
+                        onDelete={() => onDeleteEvent(todo.id)}
+                    />
                 ))}
             </TodoList>
 
             <CreateTodoButton/>
+
+            {openModal && (
+                <Modal>
+                    <p>Modal</p>
+                </Modal>
+            )
+            }
         </>
     );
 }
