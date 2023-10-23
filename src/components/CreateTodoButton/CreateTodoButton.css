@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 24px;
     right: 24px;
+    z-index: 1;
   }
 
 .create-button{
@@ -33,8 +34,16 @@
     width: 64px;
   }
 
-.create-button:hover{
-    transform: rotate(135deg);
+  .letter{
+    transform: scale(1);
     transition: .1s ease;
-}
+  }
+  .letter:hover {
+    transform: scale(1.2);
+    transition: .1s ease;
+  }
 
+.rotate {
+  transform: rotate(135deg);
+  transition: .1s ease;
+}
