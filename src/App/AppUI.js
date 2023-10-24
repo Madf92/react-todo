@@ -9,6 +9,7 @@ import { TodoLoading } from '../components/TodoLoading/TodoLoading';
 import { TodoEmpty } from '../components/TodoEmpty/TodoEmpty';
 import { TodoError } from '../components/TodoError/TodoError';
 import { Modal } from '../components/Modal/Modal';
+import { TodoForm } from '../components/TodoForm/TodoForm';
 
 import { TodoContext } from '../TodoContext/TodoContext';
 
@@ -21,7 +22,6 @@ function AppUI (){
         onDeleteEvent,
         searchValue,
         openModal,
-        setOpenModal,
      } = React.useContext(TodoContext);
 
     return (
@@ -48,7 +48,7 @@ function AppUI (){
 
             {openModal && (
                 <Modal>
-                    <p>Modal</p>
+                    <TodoForm/>
                 </Modal>
             )
             }
