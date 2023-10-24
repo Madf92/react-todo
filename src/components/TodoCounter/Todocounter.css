@@ -1,4 +1,4 @@
-.tittle {
+.title {
     font-size: 24px;
     text-align: center;
     margin: 0;
@@ -6,6 +6,6 @@
     font-weight: normal;
   }
   
-  .tittle span {
+  .title span {
     font-weight: bold;
   }
