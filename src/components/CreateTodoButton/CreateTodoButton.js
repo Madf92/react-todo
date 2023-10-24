@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CreateTodoButton.css';
 import { TodoContext } from '../../TodoContext/TodoContext';
 
 function CreateTodoButton() {
-  const { setOpenModal } = React.useContext(TodoContext);
+  const { setOpenModal, openModal } = React.useContext(TodoContext);
   const [rotate, setRotate] = useState(false);
+
+  useEffect(() => {
+    setRotate(openModal);
+  }, [openModal]);
 
   const handleClick = () => {
     setOpenModal(prevState => !prevState);
-    setRotate(!rotate);
   };
 
   return (
