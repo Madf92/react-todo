@@ -15,6 +15,18 @@ function TodoProvider({ children }) {
     const searchedTodos = todos.filter(todo => todo.title.toLowerCase().includes(searchValue.toLowerCase()));
     const [openModal, setOpenModal] = React.useState(false);
 
+    const addTodo = (todo) => {
+    const newTodos = [...todos];
+    //si newTodos esta vacio, el maxId es 0
+    //si newTodos tiene elementos, el maxId es el id del ultimo elemento
+    const maxId = newTodos.length === 0 ? 0 : Math.max(...newTodos.map(todo => todo.id));
+    todo.id = maxId + 1;
+    console.log(todo);
+    newTodos.push(todo);
+    saveTodos(newTodos);
+    setOpenModal(false);
+    }
+
     const onMarkEvent = (todoId) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(todoItem => todoItem.id === todoId);
@@ -42,6 +54,7 @@ function TodoProvider({ children }) {
         error,
         openModal,
         setOpenModal,
+        addTodo,
     }}>
         {children}
     </TodoContext.Provider>
